@@ -19,8 +19,3 @@ class User:
     @property
     def __str__(self):
         return f"{self.__class__.__name__}: {', '.join([f'{chave}={valor}' for chave, valor in self.__dict__.items()])}"
-
-
-u1 = User(name=1, email="asd", age=1)
-
-print(u1.name)
