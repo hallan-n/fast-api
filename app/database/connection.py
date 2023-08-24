@@ -1,5 +1,9 @@
 import mysql.connector
 from mysql.connector import errorcode
+from os import getenv
+from dotenv import load_dotenv
+
+load_dotenv()
 
 config = {
     "host": "localhost",
@@ -36,4 +40,3 @@ def open_database():
             mycursor.execute("CREATE DATABASE db_fastpi")
             create_Table()
             print("O banco não existia e foi criado")
-
