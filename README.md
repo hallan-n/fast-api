@@ -10,3 +10,7 @@ End-point principal
 - Python 3
 - FastAPI(Framework Web)
 - MySql
+##### Libs
+- uvicorn
+- python-dotenv
+- mysql-connector-python
