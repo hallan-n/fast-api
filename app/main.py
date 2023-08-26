@@ -11,7 +11,7 @@ from app.database.persistence import (
 app = FastAPI()
 
 
-@app.post("/")
+@app.post("/user")
 async def set_user(user: User):
     """Set users"""
     response = create_user(user)
@@ -21,20 +21,20 @@ async def set_user(user: User):
         return {"response": "Unable to create user"}
 
 
-@app.get("/")
+@app.get("/user")
 async def get_user():
     """Get users"""
     return get_all_users()
 
 
-@app.get("/{id}")
+@app.get("/user/{id}")
 async def get_user_for_id(id):
     """Get users"""
 
     return get_user_params(id)
 
 
-@app.put("/")
+@app.put("/user")
 async def put_user(user: User):
     """Set users"""
     response = update_user(user)
@@ -44,7 +44,7 @@ async def put_user(user: User):
         return {"response": "Unable to update user"}
 
 
-@app.delete("/{id}")
+@app.delete("/user/{id}")
 async def del_user(id):
     """Set users"""
     response = delete_user(id)
