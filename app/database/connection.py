@@ -11,13 +11,6 @@ config = {
     "password": getenv("DB_PASSWORD"),
     "database": getenv("DB_DATABASE"),
 }
-# config = {
-#     "host": "localhost",
-#     "user": "root",
-#     "password": "123456",
-#     "database": "db_fastapi",
-# }
-print(config)
 
 
 def open_database():
@@ -43,6 +36,6 @@ def open_database():
                 host="localhost", user="root", password="123456"
             )
             mycursor = mydb.cursor()
-            mycursor.execute("CREATE DATABASE db_fastpi")
+            mycursor.execute("CREATE DATABASE db_fastapi")
             create_Table()
             print("O banco não existia e foi criado")
