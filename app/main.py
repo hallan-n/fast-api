@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from .model.user import User
-from .database.persistence import create_user, get_all_users
+from app.models.user import User
+from app.database.persistence import get_all_users, create_user
 
 app = FastAPI()
 
@@ -19,4 +19,3 @@ async def set_user(user: User):
 async def get_user():
     """Get users"""
     return get_all_users()
-    

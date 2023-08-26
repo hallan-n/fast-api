@@ -1,5 +1,5 @@
-from .connection import open_database
-from ..model.user import User
+from app.database.connection import open_database
+from app.models.user import User
 
 
 def create_user(user: User) -> bool:
@@ -13,7 +13,8 @@ def create_user(user: User) -> bool:
     mydb.close()
     return True
 
-def get_all_users() -> list[User]:
+
+def get_all_users():
     """Get all user"""
 
     mydb = open_database()
@@ -23,12 +24,6 @@ def get_all_users() -> list[User]:
     result = mycursor.fetchall()
     users = []
     for x in result:
-        user = {
-            "id": x[0],
-            "name": x[1],
-            "email": x[2],
-            "age": x[3]
-        }
+        user = {"id": x[0], "name": x[1], "email": x[2], "age": x[3]}
         users.append(user)
     return users
-

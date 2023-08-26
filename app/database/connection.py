@@ -1,29 +1,35 @@
 import mysql.connector
 from mysql.connector import errorcode
-from os import getenv
 from dotenv import load_dotenv
+from os import getenv
 
 load_dotenv()
 
 config = {
-    "host": "localhost",
-    "user": "root",
-    "password": "123456",
-    "database": "db_fastpi",
+    "host": getenv("DB_HOST"),
+    "user": getenv("DB_USER"),
+    "password": getenv("DB_PASSWORD"),
+    "database": getenv("DB_DATABASE"),
 }
-
-
-def create_Table(table="user"):
-    tables = {
-        "user": "CREATE TABLE IF NOT EXISTS user (id int PRIMARY KEY AUTO_INCREMENT,name varchar(50),email varchar(100),age int(3))"
-    }
-
-    mydb = mysql.connector.connect(**config)
-    mycursor = mydb.cursor()
-    mycursor.execute(tables[table])
+# config = {
+#     "host": "localhost",
+#     "user": "root",
+#     "password": "123456",
+#     "database": "db_fastapi",
+# }
+print(config)
 
 
 def open_database():
+    def create_Table(table="user"):
+        tables = {
+            "user": "CREATE TABLE IF NOT EXISTS user (id int PRIMARY KEY AUTO_INCREMENT,name varchar(50),email varchar(100),age int(3))"
+        }
+
+        mydb = mysql.connector.connect(**config)
+        mycursor = mydb.cursor()
+        mycursor.execute(tables[table])
+
     try:
         mydb = mysql.connector.connect(**config)
         print("Conectou")
